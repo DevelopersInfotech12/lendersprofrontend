@@ -1,14 +1,17 @@
 import { NextResponse } from 'next/server';
 
-const PUBLIC_PATHS = ['/login', '/register'];
+// Note: auth-gating can't reliably happen here anymore — the auth cookie is
+// set by the backend on a different domain (onrender.com) than this app
+// (vercel.app), so Next.js never sees it in this cross-domain request.
+// Route protection is instead handled client-side (see Sidebar.jsx, which
+// calls authAPI.me() and redirects to /login on failure).
 
 export function proxy(request) {
   const { pathname, searchParams } = request.nextUrl;
-  
-  // Handle token passed via URL query param (from Google OAuth)
+
+  // Handle token passed via URL query param (from Google OAuth), if that flow is ever completed
   const urlToken = searchParams.get('token');
   if (urlToken) {
-    const redirectTo = pathname === '/auth/callback' ? '/dashboard' : pathname;
     const response = NextResponse.redirect(new URL('/dashboard', request.url));
     response.cookies.set('token', urlToken, {
       httpOnly: true,
@@ -20,20 +23,8 @@ export function proxy(request) {
     return response;
   }
 
-  const token = request.cookies.get('token')?.value;
-
-  if (PUBLIC_PATHS.some(p => pathname.startsWith(p))) {
-    if (token) return NextResponse.redirect(new URL('/dashboard', request.url));
-    return NextResponse.next();
-  }
-
   if (pathname === '/') {
-    if (token) return NextResponse.redirect(new URL('/dashboard', request.url));
-    return NextResponse.redirect(new URL('/login', request.url));
-  }
-
-  if (!token) {
-    return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(new URL('/dashboard', request.url));
   }
 
   return NextResponse.next();

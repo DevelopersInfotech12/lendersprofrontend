@@ -6,6 +6,7 @@ import {
   RefreshCw, ShieldCheck, Landmark, BellRing, Moon, Sun, Zap, UserCircle,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { authAPI } from "@/lib/api";
 import { useTheme } from "./ThemeProvider";
 
@@ -23,6 +24,7 @@ const navItems = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const { theme, toggle } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -32,7 +34,9 @@ export default function Sidebar() {
   useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
-    authAPI.me().then((r) => setUser(r.data.data)).catch(() => {});
+    authAPI.me()
+      .then((r) => setUser(r.data.data))
+      .catch(() => router.replace("/login"));
   }, []);
 
   const sidebarBg    = isDark ? "#0f0e0c" : "#072041";
