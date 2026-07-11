@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+body { @apply bg-slate-50 text-slate-800 font-sans; }
+
+/* ── Scrollbar (match minicrm) ── */
+::-webkit-scrollbar { width: 2px; height: 2px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }
+.dark ::-webkit-scrollbar-thumb { background: #3a3020; }
+::-webkit-scrollbar-thumb:hover { background: #9a7020; }
+
+.card { @apply bg-white rounded-xl shadow-sm border border-slate-100 p-6; }
+.btn-primary { @apply bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed; }
+.btn-secondary { @apply bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-lg font-medium transition-colors duration-150; }
+.btn-danger { @apply bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-150; }
+.input { @apply w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent; }
+.label { @apply block text-sm font-medium text-slate-700 mb-1; }
+
+/* ── Table row hover / skeleton shimmer (minicrm-style table UI) ── */
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.skeleton {
+  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
