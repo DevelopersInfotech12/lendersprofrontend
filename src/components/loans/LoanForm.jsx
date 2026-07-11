@@ -75,7 +75,7 @@ export default function LoanForm({ initial = {}, onSuccess, onCancel }) {
         </select>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="label">Principal Amount (₹) *</label>
           <input name="principalAmount" type="number" min="1" value={form.principalAmount} onChange={handleChange} className="input" placeholder="50000" required />

@@ -52,7 +52,7 @@ export default function RepaymentForm({ loan, onSuccess, onCancel }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="label">Amount (₹) *</label>
           <input name="amount" type="number" min="1" max={remaining} step="1" value={form.amount} onChange={handleChange} className="input" placeholder="5000" required />

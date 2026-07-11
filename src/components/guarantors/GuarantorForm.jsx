@@ -52,7 +52,7 @@ export default function GuarantorForm({ initial = {}, onSuccess, onCancel }) {
         </select>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="label">Guarantor Name *</label>
           <input name="name" value={form.name} onChange={handleChange} className="input" placeholder="Full name" required />

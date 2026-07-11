@@ -119,7 +119,7 @@ export default function RemindersPage() {
       />
 
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-3.5 mb-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 mb-6">
         {[
           { label: "Total", value: items.length, color: "#6366f1", icon: CalendarIcon },
           { label: "Today", value: todayItems.length, color: "#10b981", icon: Clock },
@@ -138,9 +138,9 @@ export default function RemindersPage() {
         ))}
       </div>
 
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {/* Calendar grid */}
-        <div className="col-span-2 bg-gray-100 border border-gray-200/80 rounded-2xl overflow-hidden">
+        <div className="lg:col-span-2 bg-gray-100 border border-gray-200/80 rounded-2xl overflow-hidden">
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200">
             <h2 className="font-bold text-base text-gray-900">{MONTHS[current.month]} {current.year}</h2>
             <div className="flex items-center gap-2">

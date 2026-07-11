@@ -54,7 +54,7 @@ export default function ReminderForm({ initial = {}, onSuccess, onCancel }) {
         <input name="title" value={form.title} onChange={handleChange} className="input" placeholder="Call about overdue installment" required />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="label">Borrower</label>
           <select name="borrower" value={form.borrower} onChange={handleChange} className="input">

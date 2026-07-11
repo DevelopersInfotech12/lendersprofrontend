@@ -43,7 +43,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Loan Status Summary */}
-      <div className="grid grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <div className="bg-white border border-gray-200/80 rounded-xl p-5 text-center">
           <p className="text-3xl font-bold text-green-600">{stats.activeLoans}</p>
           <p className="text-sm text-slate-500 mt-1">Active Loans</p>
