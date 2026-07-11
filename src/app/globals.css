@@ -6,7 +6,7 @@
 body { @apply bg-slate-50 text-slate-800 font-sans; }
 
 /* ── Scrollbar (match minicrm) ── */
-::-webkit-scrollbar { width: 2px; height: 2px; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }
 .dark ::-webkit-scrollbar-thumb { background: #3a3020; }
